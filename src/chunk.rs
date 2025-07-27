@@ -3,6 +3,11 @@ use crate::value::Val;
 #[repr(u8)]
 pub(crate) enum OpCode {
     OpConstant,
+    OpAdd,
+    OpSubtract,
+    OpMultiply,
+    OpDivide,
+    OpNegate,
     OpReturn,
 }
 
@@ -12,7 +17,12 @@ impl TryFrom<&u8> for OpCode {
     fn try_from(value: &u8) -> Result<Self, Self::Error> {
         match value {
             0 => Ok(OpCode::OpConstant),
-            1 => Ok(OpCode::OpReturn),
+            1 => Ok(OpCode::OpAdd),
+            2 => Ok(OpCode::OpSubtract),
+            3 => Ok(OpCode::OpMultiply),
+            4 => Ok(OpCode::OpDivide),
+            5 => Ok(OpCode::OpNegate),
+            6 => Ok(OpCode::OpReturn),
             _ => Err(""),
         }
     }

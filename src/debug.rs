@@ -45,6 +45,11 @@ impl Chunk {
             if let Ok(instruction) = OpCode::try_from(byte) {
                 match instruction {
                     OpCode::OpConstant => self.constant_instruction("OP_CONSTANT", offset),
+                    OpCode::OpAdd => self.simple_instruction("OP_ADD", offset),
+                    OpCode::OpSubtract => self.simple_instruction("OP_SUBTRACT", offset),
+                    OpCode::OpMultiply => self.simple_instruction("OP_MULTIPLY", offset),
+                    OpCode::OpDivide => self.simple_instruction("OP_DIVIDE", offset),
+                    OpCode::OpNegate => self.simple_instruction("OP_NEGATE", offset),
                     OpCode::OpReturn => self.simple_instruction("OP_RETURN", offset),
                 }
             } else {
